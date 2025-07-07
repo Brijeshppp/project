@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,37 +11,38 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
+            --primary-color: #86b7fe;
+            --secondary-color: #0d6efd;
             --accent-color: #4cc9f0;
             --light-color: #f8f9fa;
             --dark-color: #212529;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
-        
+
         .navbar {
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .navbar-brand {
             font-weight: 700;
             font-size: 24px;
-            color: var(--primary-color);
+            color: #4361ee;
         }
-        
+
         .nav-link {
             font-weight: 500;
             margin: 0 10px;
         }
-        
+
         .hero-section {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -48,7 +50,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -59,48 +61,48 @@
             background: url('https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80') no-repeat center center/cover;
             opacity: 0.1;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 1;
         }
-        
+
         .hero-title {
             font-weight: 700;
             font-size: 2.8rem;
             margin-bottom: 20px;
         }
-        
+
         .hero-subtitle {
             font-size: 1.2rem;
             margin-bottom: 30px;
             opacity: 0.9;
         }
-        
+
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background-color: #4361ee;
+            border-color: #4361ee;
             padding: 10px 25px;
             font-weight: 500;
         }
-        
+
         .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+            background-color: #4361ee;
+            border-color: #4361ee;
         }
-        
+
         .btn-outline-light {
             padding: 10px 25px;
             font-weight: 500;
         }
-        
+
         .section-title {
             font-weight: 700;
             margin-bottom: 50px;
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -108,9 +110,9 @@
             left: 0;
             width: 50px;
             height: 3px;
-            background-color: var(--primary-color);
+            background-color: #4361ee;
         }
-        
+
         .feature-card {
             padding: 30px 20px;
             border-radius: 10px;
@@ -120,28 +122,28 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
+
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: #4361ee;
             margin-bottom: 20px;
         }
-        
+
         .feature-title {
             font-weight: 600;
             margin-bottom: 15px;
         }
-        
+
         .upload-section {
             background-color: var(--light-color);
             padding: 80px 0;
         }
-        
+
         .upload-area {
             border: 2px dashed #ccc;
             border-radius: 10px;
@@ -151,31 +153,31 @@
             transition: all 0.3s ease;
             background-color: white;
         }
-        
+
         .upload-area:hover {
-            border-color: var(--primary-color);
+            border-color: #4361ee;
         }
-        
+
         .upload-icon {
             font-size: 3rem;
-            color: var(--primary-color);
+            color: #4361ee;
             margin-bottom: 20px;
         }
-        
+
         .how-it-works {
             padding: 80px 0;
         }
-        
+
         .step-card {
             text-align: center;
             padding: 30px 20px;
             position: relative;
         }
-        
+
         .step-number {
             width: 50px;
             height: 50px;
-            background-color: var(--primary-color);
+            background-color: #4361ee;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -184,12 +186,12 @@
             font-weight: 700;
             margin: 0 auto 20px;
         }
-        
+
         .testimonial-section {
             background-color: var(--light-color);
             padding: 80px 0;
         }
-        
+
         .testimonial-card {
             padding: 30px;
             border-radius: 10px;
@@ -197,42 +199,42 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin: 15px;
         }
-        
+
         .testimonial-text {
             font-style: italic;
             margin-bottom: 20px;
         }
-        
+
         .client-name {
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .client-title {
             color: #6c757d;
             font-size: 0.9rem;
         }
-        
+
         footer {
             background-color: var(--dark-color);
             color: white;
             padding: 60px 0 20px;
         }
-        
+
         .footer-logo {
             font-weight: 700;
             font-size: 24px;
             margin-bottom: 20px;
             display: inline-block;
         }
-        
+
         .footer-links h5 {
             font-weight: 600;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-links h5::after {
             content: '';
             position: absolute;
@@ -240,29 +242,29 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: #4361ee;
         }
-        
+
         .footer-links ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-links li {
             margin-bottom: 10px;
         }
-        
+
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-        
+
         .social-icons a {
             display: inline-block;
             width: 40px;
@@ -275,12 +277,12 @@
             margin-right: 10px;
             transition: all 0.3s ease;
         }
-        
+
         .social-icons a:hover {
-            background-color: var(--primary-color);
+            background-color: #4361ee;
             transform: translateY(-5px);
         }
-        
+
         .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -288,18 +290,19 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
         }
-        
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2rem;
             }
-            
+
             .hero-subtitle {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header/Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
@@ -343,7 +346,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://www.brightcarbon.com/wp/wp-content/uploads/2023/03/Creating-slide-backgrounds-in-ppt_Artboard-01.png" alt="Presentation summary" class="img-fluid rounded-3 shadow">
+                    <img src="https://www.brightcarbon.com/wp/wp-content/uploads/2023/03/Creating-slide-backgrounds-in-ppt_Artboard-01.png"
+                        alt="Presentation summary" class="img-fluid rounded-3 shadow">
                 </div>
             </div>
         </div>
@@ -363,7 +367,8 @@
                             <i class="fas fa-brain"></i>
                         </div>
                         <h3 class="feature-title">AI-Based Summary</h3>
-                        <p class="text-muted">Our advanced AI analyzes your presentation and extracts key points automatically.</p>
+                        <p class="text-muted">Our advanced AI analyzes your presentation and extracts key points
+                            automatically.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -403,8 +408,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title mb-4">Upload Your Presentation</h2>
-                    <p class="text-muted mb-5">Get started by uploading your PowerPoint file. Our AI will analyze it and generate a concise summary.</p>
-                    
+                    <p class="text-muted mb-5">Get started by uploading your PowerPoint file. Our AI will analyze it and
+                        generate a concise summary.</p>
                     <div class="upload-area">
                         <div class="upload-icon">
                             <i class="fas fa-cloud-upload-alt"></i>
@@ -415,7 +420,6 @@
                         <label for="fileUpload" class="btn btn-primary mb-3">Browse Files</label>
                         <p class="small text-muted">Supports .ppt and .pptx files up to 50MB</p>
                     </div>
-                    
                     <div class="mt-4">
                         <button class="btn btn-primary" disabled id="processBtn">Process My Presentation</button>
                     </div>
@@ -436,28 +440,32 @@
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h3>Upload Your PPT</h3>
-                        <p class="text-muted">Simply drag and drop your PowerPoint file or click to browse your files.</p>
+                        <p class="text-muted">Simply drag and drop your PowerPoint file or click to browse your files.
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="step-card">
                         <div class="step-number">2</div>
                         <h3>Let AI Analyze It</h3>
-                        <p class="text-muted">Our advanced AI processes your slides to identify key concepts and themes.</p>
+                        <p class="text-muted">Our advanced AI processes your slides to identify key concepts and themes.
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="step-card">
                         <div class="step-number">3</div>
                         <h3>Review Summary</h3>
-                        <p class="text-muted">Preview the automatically generated summary and make adjustments if needed.</p>
+                        <p class="text-muted">Preview the automatically generated summary and make adjustments if
+                            needed.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="step-card">
                         <div class="step-number">4</div>
                         <h3>Download Results</h3>
-                        <p class="text-muted">Download your concise summary in your preferred format (TXT, PDF, PPT).</p>
+                        <p class="text-muted">Download your concise summary in your preferred format (TXT, PDF, PPT).
+                        </p>
                     </div>
                 </div>
             </div>
@@ -477,7 +485,9 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="testimonial-card text-center">
-                                    <p class="testimonial-text">"This tool saved me hours of work. As a university professor, I receive dozens of student presentations to review. The summaries help me quickly identify key points and provide better feedback."</p>
+                                    <p class="testimonial-text">"This tool saved me hours of work. As a university
+                                        professor, I receive dozens of student presentations to review. The summaries
+                                        help me quickly identify key points and provide better feedback."</p>
                                     <div class="client-info">
                                         <h5 class="client-name">Dr. Sarah Johnson</h5>
                                         <p class="client-title">Professor of Business Administration</p>
@@ -486,7 +496,9 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="testimonial-card text-center">
-                                    <p class="testimonial-text">"I use PPT Summary Maker to quickly review conference presentations before meetings. It helps me prepare insightful questions and contribute meaningfully to discussions."</p>
+                                    <p class="testimonial-text">"I use PPT Summary Maker to quickly review conference
+                                        presentations before meetings. It helps me prepare insightful questions and
+                                        contribute meaningfully to discussions."</p>
                                     <div class="client-info">
                                         <h5 class="client-name">Michael Chen</h5>
                                         <p class="client-title">Senior Product Manager</p>
@@ -495,7 +507,9 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="testimonial-card text-center">
-                                    <p class="testimonial-text">"As a student, this tool is a game-changer. I can quickly summarize lecture slides for revision, and it even helps me identify gaps in my understanding of the material."</p>
+                                    <p class="testimonial-text">"As a student, this tool is a game-changer. I can
+                                        quickly summarize lecture slides for revision, and it even helps me identify
+                                        gaps in my understanding of the material."</p>
                                     <div class="client-info">
                                         <h5 class="client-name">Emily Rodriguez</h5>
                                         <p class="client-title">Medical Student</p>
@@ -503,11 +517,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
@@ -516,14 +532,16 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <a href="#" class="footer-logo">PPT Summary Maker</a>
-                    <p class="text-muted">The smartest way to summarize your PowerPoint presentations using advanced AI technology.</p>
+                    <p style="color:rgba(255, 255, 255, 0.7);">The smartest way to summarize your PowerPoint
+                        presentations using advanced
+                        <br>AI technology.
+                    </p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -557,9 +575,12 @@
                     <div class="footer-links">
                         <h5>Contact Us</h5>
                         <ul class="text-muted">
-                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Tech Street, San Francisco, CA</li>
-                            <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
-                            <li><i class="fas fa-envelope me-2"></i> info@pptsummarymaker.com</li>
+                            <li style="color:rgba(255, 255, 255, 0.7);"><i class="fas fa-map-marker-alt me-2"></i> 123
+                                Tech Street, San Francisco, CA</li>
+                            <li style="color:rgba(255, 255, 255, 0.7);"><i class="fas fa-phone me-2"></i> 6357400040
+                            </li>
+                            <li style="color:rgba(255, 255, 255, 0.7);"><i class="fas fa-envelope me-2"></i>
+                                patelbrijeshamarbhai@gmail.com</li>
                         </ul>
                     </div>
                 </div>
@@ -574,7 +595,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Simple file upload handling
-        document.getElementById('fileUpload').addEventListener('change', function(e) {
+        document.getElementById('fileUpload').addEventListener('change', function (e) {
             const processBtn = document.getElementById('processBtn');
             if (this.files.length > 0) {
                 processBtn.disabled = false;
@@ -583,7 +604,7 @@
                 processBtn.disabled = true;
             }
         });
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -595,4 +616,5 @@
         });
     </script>
 </body>
+
 </html>
