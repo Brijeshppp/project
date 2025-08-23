@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT Summary Maker - Professional AI Tool</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #3B82F6;
+            /* A professional blue */
+            --primary-hover: #2563EB;
+            --secondary-color: #10B981;
+            /* A complementary green */
+
+            --light-bg: #F9FAFB;
+            --light-surface: #FFFFFF;
+            --light-text: #1F2937;
+            --light-text-secondary: #6B7280;
+            --light-border: #E5E7EB;
+
+            --dark-bg: #111827;
+            --dark-surface: #1F2937;
+            --dark-text: #F9FAFB;
+            --dark-text-secondary: #9CA3AF;
+            --dark-border: #374151;
+
+            --background-color: var(--light-bg);
+            --surface-color: var(--light-surface);
+            --text-color: var(--light-text);
+            --text-secondary-color: var(--light-text-secondary);
+            --border-color: var(--light-border);
+        }
+
+        [data-theme="dark"] {
+            --background-color: var(--dark-bg);
+            --surface-color: var(--dark-surface);
+            --text-color: var(--dark-text);
+            --text-secondary-color: var(--dark-text-secondary);
+            --border-color: var(--dark-border);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .navbar {
+            background-color: color-mix(in srgb, var(--surface-color) 80%, transparent) !important;
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+        }
+
+        .theme-switcher {
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 15px;
+            color: var(--text-secondary-color);
+            transition: color 0.2s ease;
+        }
+
+        .theme-switcher:hover {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .bg-alt {
+            background-color: var(--surface-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title .highlight {
+            color: var(--primary-color);
+        }
+
+        .step-card {
+            background-color: var(--surface-color);
+            padding: 30px;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .step-card .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .feature-card {
+            background-color: var(--surface-color);
+            border: 1px solid transparent;
+            border-radius: 1rem;
+            padding: 30px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            background-color: color-mix(in srgb, var(--primary-color) 5%, var(--surface-color));
+            border-color: color-mix(in srgb, var(--primary-color) 20%, transparent);
+        }
+
+        .feature-card .icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
+            border-radius: 0.75rem;
+        }
+
+        .summary-maker-section {
+            border-radius: 1.5rem;
+            padding: clamp(20px, 5vw, 50px);
+            background: color-mix(in srgb, var(--surface-color) 70%, transparent);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 1rem;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .upload-area:hover,
+        .upload-area.dragover {
+            background-color: color-mix(in srgb, var(--primary-color) 5%, transparent);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+        }
+
+        #summaryResult {
+            background-color: var(--background-color);
+            border-radius: 0.75rem;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            color: var(--primary-color);
+        }
+
+        .testimonial-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 30px;
+            height: 100%;
+        }
+
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .faq .accordion-item {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem !important;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq .accordion-button {
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .faq .accordion-button:not(.collapsed) {
+            background-color: color-mix(in srgb, var(--primary-color) 10%, var(--surface-color));
+            color: var(--primary-color);
+            box-shadow: inset 0 -1px 0 var(--border-color);
+        }
+
+        [data-theme="dark"] .faq .accordion-button:not(.collapsed) {
+            color: var(--dark-text);
+        }
+
+        .faq .accordion-body {
+            background-color: var(--surface-color);
+            color: var(--text-secondary-color);
+        }
+
+        .faq .accordion-button:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--primary-color) 25%, transparent);
+        }
+
+        [data-theme="dark"] .accordion-button::after {
+            --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23F9FAFB'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+
+        footer {
+            background-color: var(--dark-surface);
+            color: var(--dark-text-secondary);
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        footer .footer-links a {
+            color: var(--dark-text-secondary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer .social-icons a {
+            color: var(--dark-text-secondary);
+            font-size: 1.5rem;
+            margin: 0 12px;
+            transition: color 0.2s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><i class="bi bi-file-earmark-text-fill me-2"></i>PPT Summarizer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#summarizer">Summarizer</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tech-stack">Technology</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item">
+                            <div class="theme-switcher"><i class="bi bi-moon-stars-fill" id="theme-icon"></i></div>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section" style="margin: 10vh 0vw 0vh 0vw;">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-3">Transform Lenghty Presentations into <br> <span class="highlight">Concise, Actionable
+                    Insights</span></h1>
+            <p class="lead text-secondary-color my-4 mx-auto" style="max-width: 700px;">
+                Our AI-powered tool intelligently analyzes your PowerPoint files, extracting key points to deliver a
+                clear and comprehensive summary in seconds. Stop skimming, start understanding.
+            </p>
+            <a href="#summarizer" class="btn btn-primary btn-lg">Generate Summary <i
+                    class="bi bi-arrow-right-short"></i></a>
+        </div>
+    </header>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <h2 class="section-title">A Simple, Three-Step Process</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Secure Upload</h4>
+                        <p class="text-secondary-color small">Drag and drop or select your .pptx file. We prioritize
+                            your privacy with end-to-end encryption.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>AI Analysis</h4>
+                        <p class="text-secondary-color small">Our proprietary algorithm processes textual content,
+                            identifying main topics and supporting details.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Instant Summary</h4>
+                        <p class="text-secondary-color small">Receive a structured, easy-to-read summary. Copy, export,
+                            or share your new, condensed knowledge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Intelligent by Design</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="feature-card">
+                        <div class="icon"><i class="bi bi-cpu-fill"></i></div>
+                        <h5>Context-Aware Summarization</h5>
+                        <p class="text-secondary-color small">Goes beyond simple keyword extraction. Our AI understands
+                            the context to provide summaries that flow naturally and make sense.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="icon"><i class="bi bi-shield-lock-fill"></i></div>
+                        <h5>Enterprise-Grade Security</h5>
+                        <p class="text-secondary-color small">Your files are processed in-memory and are permanently
+                            deleted after summarization. We never store or share your data.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="icon"><i class="bi bi-file-earmark-zip-fill"></i></div>
+                        <h5>Multiple Format Support</h5>
+                        <p class="text-secondary-color small">We support both modern .pptx and legacy .ppt file formats,
+                            ensuring broad compatibility for all your presentation files.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summarizer Section -->
+    <section id="summarizer" class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9" data-aos="zoom-in-up">
+                    <div class="summary-maker-section">
+                        <h2 class="section-title mb-4">Try It Now</h2>
+                        <input type="file" id="pptFile" accept=".ppt, .pptx" hidden>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="icon h1 text-primary"><i class="bi bi-cloud-upload"></i></div>
+                            <p class="mt-3 mb-0"><strong>Click to upload</strong> or drag and drop your PPT file.</p>
+                            <p class="text-secondary-color small">Supports .ppt and .pptx files up to 20MB</p>
+                        </div>
+                        <div id="fileName" class="text-center mt-3 text-secondary-color"></div>
+                        <div class="text-center mt-4">
+                            <button id="summarizeBtn" class="btn btn-primary btn-lg" disabled>Generate Summary</button>
+                        </div>
+
+                        <div id="loading" class="text-center mt-4" style="display: none;">
+                            <div class="spinner-border text-primary" role="status"><span
+                                    class="visually-hidden">Loading...</span></div>
+                            <p class="mt-2 text-secondary-color">Analyzing your presentation...</p>
+                        </div>
+
+                        <div id="summaryContainer" class="mt-5" style="display: none;">
+                            <h4 class="mb-3">Generated Summary:</h4>
+                            <div id="summaryResult"></div>
+                            <div class="text-center mt-3">
+                                <button id="copyBtn" class="btn btn-secondary"><i class="bi bi-clipboard"></i> Copy to
+                                    Clipboard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title">Trusted by Students & Professionals</h2>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/EEDC82/333333?text=RS" alt="User" class="me-3">
+                            <div>
+                                <h6 class="mb-0">Rohan Shah</h6>
+                                <p class="text-secondary-color small mb-0">Engineering Student</p>
+                            </div>
+                        </div>
+                        <p class="text-secondary-color">"This tool is a lifesaver for last-minute exam prep. I can get
+                            the gist of a 50-slide lecture in under a minute. Absolutely brilliant!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/98FB98/333333?text=AP" alt="User" class="me-3">
+                            <div>
+                                <h6 class="mb-0">Anjali Patel</h6>
+                                <p class="text-secondary-color small mb-0">Marketing Intern</p>
+                            </div>
+                        </div>
+                        <p class="text-secondary-color">"I use this to quickly review competitor analysis presentations.
+                            It saves me hours of work each week. The summaries are surprisingly accurate."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/ADD8E6/333333?text=VK" alt="User" class="me-3">
+                            <div>
+                                <h6 class="mb-0">Vikram Kumar</h6>
+                                <p class="text-secondary-color small mb-0">Project Manager</p>
+                            </div>
+                        </div>
+                        <p class="text-secondary-color">"A fantastic tool for getting up to speed on project updates.
+                            The interface is clean, professional, and incredibly easy to use."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion faq" id="faqAccordion">
+                        <div class="accordion-item" data-aos="fade-up">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne">
+                                    Is my data safe and private?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <strong>Absolutely.</strong> We take your privacy very seriously. All uploaded files
+                                    are processed in a secure, isolated environment and are permanently deleted from our
+                                    servers immediately after the summary is generated. We do not store, view, or share
+                                    your content.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo">
+                                    How accurate are the summaries?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our AI model is trained to identify and prioritize the most salient information in a
+                                    presentation. While accuracy is very high, the quality of the summary can depend on
+                                    the clarity and structure of the original PPT. It's designed to be a powerful
+                                    starting point for understanding, not a replacement for critical reading.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree">
+                                    Does it work with presentations that are mostly images?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Currently, our summarizer focuses on the textual content within the presentation
+                                    (titles, bullet points, notes, etc.). While we plan to incorporate image analysis
+                                    (OCR) in future versions, the current model will not be able to summarize text
+                                    embedded within images.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <div class="container text-center">
+            <h2 class="section-title">About This Project</h2>
+            <p class="text-secondary-color mx-auto" style="max-width: 700px;">
+                This PPT Summarizer is a 5th Semester Computer Engineering project from Gujarat Technological
+                University. Our mission was to apply modern Natural Language Processing techniques to solve a common
+                problem for students and professionals alike: information overload. We aimed to build a tool that is not
+                only functional but also secure, user-friendly, and professional.
+            </p>
+            <!-- <h5 class="mt-5">Project Team</h5> -->
+            <!-- <div class="d-flex justify-content-center mt-3">
+                <div class="mx-3">
+                    <img src="https://placehold.co/80x80/3B82F6/FFFFFF?text=P1" class="rounded-circle mb-2"
+                        alt="Team Member 1">
+                    <h6>Member 1</h6>
+                </div>
+                <div class="mx-3">
+                    <img src="https://placehold.co/80x80/10B981/FFFFFF?text=P2" class="rounded-circle mb-2"
+                        alt="Team Member 2">
+                    <h6>Member 2</h6>
+                </div>
+                <div class="mx-3">
+                    <img src="https://placehold.co/80x80/F59E0B/FFFFFF?text=P3" class="rounded-circle mb-2"
+                        alt="Team Member 3">
+                    <h6>Member 3</h6>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="mb-4 footer-links">
+                <a href="#features">Features</a>
+                <a href="#summarizer">Summarizer</a>
+                <a href="#faq">FAQ</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="mb-4 social-icons">
+                <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            </div>
+            <p>&copy; 2025 PPT Summary Maker. A GTU Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Animate On Scroll Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 600, once: true, easing: 'ease-in-out-quad' });
+
+        // --- Theme Switcher ---
+        const themeSwitcher = document.getElementById('theme-icon');
+        const doc = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        doc.setAttribute('data-theme', currentTheme);
+        themeSwitcher.className = currentTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+
+        themeSwitcher.addEventListener('click', () => {
+            const currentTheme = doc.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            doc.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeSwitcher.className = newTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+        });
+
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 70; // Navbar height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // --- File Upload & Summarization Logic ---
+        const uploadArea = document.getElementById('uploadArea');
+        const pptFile = document.getElementById('pptFile');
+        const fileNameDisplay = document.getElementById('fileName');
+        const summarizeBtn = document.getElementById('summarizeBtn');
+        const loadingDiv = document.getElementById('loading');
+        const summaryContainer = document.getElementById('summaryContainer');
+        const summaryResult = document.getElementById('summaryResult');
+        const copyBtn = document.getElementById('copyBtn');
+
+        uploadArea.addEventListener('click', () => pptFile.click());
+        pptFile.addEventListener('change', handleFileSelect);
+
+        // Drag and Drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.add('dragover'), false);
+        });
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('dragover'), false);
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            pptFile.files = e.dataTransfer.files;
+            handleFileSelect();
+        });
+
+        function handleFileSelect() {
+            if (pptFile.files.length > 0) {
+                fileNameDisplay.textContent = `File selected: ${pptFile.files[0].name}`;
+                summarizeBtn.disabled = false;
+            }
+        }
+
+        summarizeBtn.addEventListener('click', () => {
+            if (pptFile.files.length === 0) return;
+
+            loadingDiv.style.display = 'block';
+            summaryContainer.style.display = 'none';
+            summarizeBtn.disabled = true;
+            summarizeBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Summarizing...';
+
+            setTimeout(() => {
+                loadingDiv.style.display = 'none';
+                const mockSummary = `**1. Introduction to Machine Learning**\n- Definition: A subfield of AI focused on building systems that learn from data.\n- Core Categories: Supervised, Unsupervised, and Reinforcement Learning.\n\n**2. Supervised Learning**\n- Objective: To learn a function that maps inputs (X) to outputs (y) based on labeled training data.\n- Key Algorithms: Linear Regression, Logistic Regression, Support Vector Machines (SVM), Decision Trees.\n- Use Case: Predicting house prices from features like area and location.\n\n**3. Unsupervised Learning**\n- Objective: To identify hidden patterns and structures within unlabeled data.\n- Key Algorithms: K-Means Clustering, Principal Component Analysis (PCA), Apriori algorithm.\n- Use Case: Customer segmentation for targeted marketing campaigns.\n\n**4. Conclusion & Future Outlook**\n- Summary: Machine learning is a transformative technology for data analysis and automated decision-making.\n- Future Trends: Increased adoption of Deep Learning, advancements in Explainable AI (XAI), and growth in Reinforcement Learning applications.`;
+
+                summaryResult.textContent = mockSummary.trim();
+                summaryContainer.style.display = 'block';
+                summarizeBtn.disabled = false;
+                summarizeBtn.textContent = 'Generate Summary';
+
+                summaryContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 2500);
+        });
+
+        // Copy to clipboard
+        copyBtn.addEventListener('click', () => {
+            const originalText = copyBtn.innerHTML;
+            navigator.clipboard.writeText(summaryResult.textContent).then(() => {
+                copyBtn.innerHTML = '<i class="bi bi-check-lg"></i> Copied!';
+                setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
+            }).catch(err => console.error('Failed to copy: ', err));
+        });
+    </script>
+</body>
+</html>
