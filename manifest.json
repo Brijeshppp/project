@@ -1,0 +1,27 @@
+{
+  "name": "PPT Summary Maker",
+  "short_name": "PPT Summarizer",
+  "description": "AI-powered tool for summarizing PowerPoint presentations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#6c63ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "education", "business"],
+  "lang": "en",
+  "dir": "ltr"
+}
